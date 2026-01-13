@@ -14,7 +14,7 @@ export default function Register() {
   let validationSchema = Yup.object({
     name: Yup.string().required("name Required").min(3, "min length 3").max(20, "max length 20"),
     email: Yup.string().required("Email Required").email("enter Valid Email"),
-    password: Yup.string().required("Passowrd Required").matches(/^[A-Z][a-z0-9]{3,16}$/, "enter Valid Passowrd"),
+    password: Yup.string().required("Password Required").min(8, "Password must be at least 8 characters").matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/, "Password must contain at least one uppercase letter, one lowercase letter, and one number"),
     rePassword: Yup.string().required("Confirm Password Requited").oneOf([Yup.ref("password")], "enter matched Password"),
     phone: Yup.string().required("phone Required").matches(/^01[1250][0-9]{8}$/, "Phone not Valid")
   })
