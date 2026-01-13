@@ -20,7 +20,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: 'npm'
+      
+      - name: Clean npm cache
+        run: npm cache clean --force
+      
+      - name: Remove package-lock.json
+        run: rm -f package-lock.json
       
       - name: Install dependencies
         run: npm install --legacy-peer-deps
